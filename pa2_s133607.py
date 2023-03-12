@@ -8,12 +8,25 @@ Output:
 Algorithm:
 Test:
 """
+
+
 def main():
     notDone = True
     while notDone:
         pass
 
 
+def process(x, mean, stdv):
+    pass
 
-def process():
+
+def averageProbabilityDensityValue():
+    pass
+
+
+def calculateProbabilityDensityValue():
+    pass
+
+
+def printData():
     pass

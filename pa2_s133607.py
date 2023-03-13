@@ -11,34 +11,33 @@ Test:
 from math import pi, sqrt, e
 
 
-
-
 def main():
     total = 0
     count = 0
-    temp = input("Please Enter x, mean and stdv: ").split()
-    while not temp[0] == "q" and not temp[1] == "q" and not temp[2] == "q":
-        if temp[0].isdigit() and temp[1].isdigit() and temp[2].isdigit():
-            temp[0] = float(temp[0])
-            temp[1] = float(temp[1])
-            temp[2] = float(temp[2])
-            process(temp[0], temp[1], temp[2], total, count)
-            temp = input("Please Enter x, mean and stdv: ").split()
-        else:
-            print("Invalid input....")
-            temp = input("Please Enter x, mean and stdv: ").split()
-
+    x, mean, stdv = input("Please Enter x, mean and stdv: ").split()
+    while not x == "q" and not mean == "q" and not stdv == "q":
+        # if temp[0].isdigit() and temp[1].isdigit() and temp[2].isdigit():
+        x = float(x)
+        mean = float(mean)
+        stdv = float(stdv)
+        process(x, mean, stdv)
+        temp = input("Please Enter x, mean and stdv: ").split()
+    # else:
+    #     print("Invalid input....")
+    #     temp = input("Please Enter x, mean and stdv: ").split()
     print("The average prob density of values having normal distribution:",
           averageProbabilityDensityValue(total, count))
-    print("Ther were",count,"values having normal distribution.")
+    print("Ther were", count, "values having normal distribution.")
 
 
 def calculateProbabilityDensityValue(x):
-    px = 1 / sqrt(2 * pi) - e ** -x ** 2 / 2
+    px = 1 / sqrt(2 * pi) - e ** ((-x ** 2) / 2)
     return px
 
 
 def process(x, mean, stdv, total, count):
+    if x < 0:
+        x = abs(x)
     px = 0
     if mean == 0 and stdv == 1:
         px = calculateProbabilityDensityValue(x)
@@ -58,14 +57,15 @@ def averageProbabilityDensityValue(total, count):
 
 
 def printData(x, mean, stdv, px):
-    print("%10s%10s%20s%50s" % ("x", "Mean", "standDev", "P(X) / MSG"))
-    print("%10s%10s%20s%50s" % ("---", "---------", "---------", "---------"))
+    print("%6s%9s%10s%20s" % ("x", "Mean", "standDev", "P(X) / MSG"))
+    print("%6s%9s%10s%20s" % ("---", "---------", "---------", "---------"))
     px = str(px)
-    if px.isdigit():
-        px = float(px)
-        print("%10.2f%10.2f%20.2f%50.4f" % (x, mean, stdv, px))
+    if px == "***Not Normal Dist.***":
+        print("%6.2f%9.2f%10.2f%20s" % (x, mean, stdv, px))
     else:
-        print("%10.2f%10.2f%20.2f%50s" % (x, mean, stdv, px))
+        px = float(px)
+        px = round(px, 4)
+        print("%6.2f%9.2f%10.2f%20s" % (x, mean, stdv, px))
 
 
 main()

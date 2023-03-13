@@ -20,8 +20,8 @@ def main():
         x = float(x)
         mean = float(mean)
         stdv = float(stdv)
-        process(x, mean, stdv)
-        temp = input("Please Enter x, mean and stdv: ").split()
+        total,count = process(x, mean, stdv, total, count)
+        x, mean, stdv = input("Please Enter x, mean and stdv: ").split()
     # else:
     #     print("Invalid input....")
     #     temp = input("Please Enter x, mean and stdv: ").split()
@@ -47,13 +47,14 @@ def process(x, mean, stdv, total, count):
         px = "***Not Normal Dist.***"
 
     printData(x, mean, stdv, px)
+    return total, count
 
 
 def averageProbabilityDensityValue(total, count):
     if total == 0 or count == 0:
         return 0
     else:
-        return total / count
+        return round(total / count, 4)
 
 
 def printData(x, mean, stdv, px):

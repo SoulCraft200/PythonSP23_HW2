@@ -31,7 +31,7 @@ def main():
 
 
 def calculateProbabilityDensityValue(x):
-    px = 1 / sqrt(2 * pi) - e ** ((-x ** 2) / 2)
+    px = 1 / sqrt(2 * pi) - e ** ((-x ** 2) / 2).
     return px
 
 

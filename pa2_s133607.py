@@ -16,15 +16,15 @@ def main():
     count = 0
     x, mean, stdv = input("Please Enter x, mean and stdv: ").split()
     while not x == "q" and not mean == "q" and not stdv == "q":
-        if x[len(x)-1].isdigit() and mean.isdigit() and stdv.isdigit():
+        if x.replace("-", "").isdigit() and mean.isdigit() and stdv.isdigit():
             x = float(x)
             mean = float(mean)
             stdv = float(stdv)
-            total,count = process(x, mean, stdv, total, count)
+            total, count = process(x, mean, stdv, total, count)
             x, mean, stdv = input("Please Enter x, mean and stdv: ").split()
         else:
             print("Invalid input....")
-            temp = input("Please Enter x, mean and stdv: ").split()
+            x, mean, stdv = input("Please Enter x, mean and stdv: ").split()
 
     print("The average prob density of values having normal distribution:",
           averageProbabilityDensityValue(total, count))
@@ -39,7 +39,6 @@ def calculateProbabilityDensityValue(x):
 def process(x, mean, stdv, total, count):
     if x < 0:
         x = abs(x)
-    px = 0
     if mean == 0 and stdv == 1:
         px = calculateProbabilityDensityValue(x)
         total += px

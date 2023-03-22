@@ -16,7 +16,7 @@ def main():
     count = 0
     x, mean, stdv = input("Please Enter x, mean and stdv: ").split()
     while not x == "q" and not mean == "q" and not stdv == "q":
-        if ((x[0]=='-' and x[1:].isdigit()) or x.isdigit()) and mean.isdigit() and stdv.isdigit():
+        if ((x[0] == '-' and x[1:].isdigit()) or x.isdigit()) and mean.isdigit() and stdv.isdigit():
             x = float(x)
             mean = float(mean)
             stdv = float(stdv)
@@ -28,7 +28,7 @@ def main():
 
     print("The average prob density of values having normal distribution:",
           averageProbabilityDensityValue(total, count))
-    print("Ther were", count, "values having normal distribution.")
+    print("There were", count, "values having normal distribution.")
 
 
 def calculateProbabilityDensityValue(x):

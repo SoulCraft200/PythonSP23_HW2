@@ -2,12 +2,47 @@
 Name:Sulaiman Khalifa Khalfan Al Yousfi
 ID:s133607
 HW:2
-Purpose:
+Purpose:    Write a program that continuously prompt the user for number,mean,stdv then calculates the probability, when
+            the stops in calculate the average of all the probabilities and the number of them.
 Input:
 Output:
 Algorithm:
 Test:
+    Case 1:
+        Inputs:
+            input1: -4 0 1
+            input2: -2 1 1
+            input3: 0 0 1
+            input4: 5 0 1
+            input5: 2 1 1
+            input6: q q q
+        Outputs:
+            Please Enter x, mean and stdv: -4 0 1
+                 x     Mean  standDev          P(X) / MSG
+               ------------ ---------           ---------
+              4.00     0.00      1.00              0.3986
+            Please Enter x, mean and stdv: -2 1 1
+                 x     Mean  standDev          P(X) / MSG
+               ------------ ---------           ---------
+              2.00     1.00      1.00***Not Normal Dist.***
+            Please Enter x, mean and stdv: 0 0 1
+                 x     Mean  standDev          P(X) / MSG
+               ------------ ---------           ---------
+              0.00     0.00      1.00             -0.6011
+            Please Enter x, mean and stdv: 5 0 1
+                 x     Mean  standDev          P(X) / MSG
+               ------------ ---------           ---------
+              5.00     0.00      1.00              0.3989
+            Please Enter x, mean and stdv: 2 1 1
+                 x     Mean  standDev          P(X) / MSG
+               ------------ ---------           ---------
+              2.00     1.00      1.00***Not Normal Dist.***
+            Please Enter x, mean and stdv: q q q
+            The average prob density of values having normal distribution: 0.0655
+            There were 3 values having normal distribution.
+
 """
+# Importing functions and variables.
 from math import pi, sqrt, e
 
 

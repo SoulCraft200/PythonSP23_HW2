@@ -5,16 +5,40 @@ HW:2
 Purpose:    Write a program that continuously prompt the user for number,mean,stdv then calculates the probability, when
             the stops in calculate the average of all the probabilities and the number of them.
 Algorithm:
+    Main():
+        1)Prompt the user for input.
+        2)If the input is less or more than 3 values keep asking.
+        3)Assign the values of x, mean, stdv.
+        4)While the user didn't enter q q q keep asking.
+            1) if x, mean, stdv are all digit.
+                1)call process
+                2)Ask user again.
+            2) else Show error msg and ask again.
+        5)Print the average and count.
+    Process():
+        1)If x is negative turns it to positive.
+        2)If the mean = 0 and stdv = 1
+            1)Calculate Prob using its function
+            2)Add prob to total
+            3)Increment count.
+        3)else Prob isn't normal
+        4)Print the data in a table using PrintData function.
+        5)return total and count.
+
+
 Test:
     Case 1:
         Inputs:
-            input1: -4 0 1
+            input1: a a
+            input2: -4 0 1
             input2: -2 1 1
             input3: 0 0 1
             input4: 5 0 1
             input5: 2 1 1
             input6: q q q
         Outputs:
+            Please Enter x, mean and stdv: a a
+            Please input 3 values!!!
             Please Enter x, mean and stdv: -4 0 1
                  x     Mean  standDev          P(X) / MSG
                ------------ ---------           ---------
@@ -47,17 +71,29 @@ from math import pi, sqrt, e
 def main():
     total = 0
     count = 0
-    x, mean, stdv = input("Please Enter x, mean and stdv: ").split()
+    inpt = input("Please Enter x, mean and stdv: ").split()
+    while len(inpt) != 3:
+        print("Please input 3 values!!!")
+        inpt = input("Please Enter x, mean and stdv: ").split()
+    x, mean, stdv = inpt
     while not x == "q" and not mean == "q" and not stdv == "q":
         if ((x[0] == '-' and x[1:].isdigit()) or x.isdigit()) and mean.isdigit() and stdv.isdigit():
             x = float(x)
             mean = float(mean)
             stdv = float(stdv)
             total, count = process(x, mean, stdv, total, count)
-            x, mean, stdv = input("Please Enter x, mean and stdv: ").split()
+            inpt = input("Please Enter x, mean and stdv: ").split()
+            while len(inpt) != 3:
+                print("Please input 3 values!!!")
+                inpt = input("Please Enter x, mean and stdv: ").split()
+            x, mean, stdv = inpt
         else:
             print("Invalid input....")
-            x, mean, stdv = input("Please Enter x, mean and stdv: ").split()
+            inpt = input("Please Enter x, mean and stdv: ").split()
+            while len(inpt) != 3:
+                print("Please input 3 values!!!")
+                inpt = input("Please Enter x, mean and stdv: ").split()
+            x, mean, stdv = inpt
 
     print("The average prob density of values having normal distribution:",
           averageProbabilityDensityValue(total, count))

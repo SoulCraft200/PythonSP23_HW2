@@ -4,8 +4,6 @@ ID:s133607
 HW:2
 Purpose:    Write a program that continuously prompt the user for number,mean,stdv then calculates the probability, when
             the stops in calculate the average of all the probabilities and the number of them.
-Input:
-Output:
 Algorithm:
 Test:
     Case 1:
